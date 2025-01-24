@@ -6,10 +6,10 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest  # Use Windows runner
+    runs-on: ubuntu-latest
 
     steps:
-    # Step 1: Checkout code
+    # Step 1: Check out code
     - name: Checkout code
       uses: actions/checkout@v3
 
@@ -19,10 +19,9 @@ jobs:
       with:
         node-version: '16'
 
-    # Step 3: Installing Surge
-    - name: Install Surge
+    # Step 3: Run a set of commands using the runner's shell
+    - name: Installing surge
       run: npm install --global surge
-
-    # Step 4: Deploy using Surge
-    - name: Deploying using Surge
+    - name: deploying using surge
       run: surge ./helloworldnew.surge.sh --token ${{ secrets.SURGE_TOKEN }}
+      
