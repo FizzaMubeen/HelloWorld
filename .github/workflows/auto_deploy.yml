@@ -23,7 +23,8 @@ jobs:
     - name: Installing surge
       run: npm install --global surge
     - name: deploying using surge
-      run: surge ./ helloworldnew.surge.sh --token ${{ secrets.SURGE_TOKEN }}
+      run: surge C:/Users/mubee/hello/HelloWorld/helloworldnew.surge.sh --token ${{ secrets.SURGE_TOKEN }}
+      
       
 
     
