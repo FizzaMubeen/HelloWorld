@@ -1,5 +1,4 @@
 name: HelloWorld
-
 on:
   push:
     branches:
@@ -7,10 +6,10 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest  # Use Windows runner
 
     steps:
-    # Step 1: Check out code
+    # Step 1: Checkout code
     - name: Checkout code
       uses: actions/checkout@v3
 
@@ -20,20 +19,10 @@ jobs:
       with:
         node-version: '16'
 
-    # Step 3: Install Surge globally
+    # Step 3: Installing Surge
     - name: Install Surge
       run: npm install --global surge
 
-    # Step 4: Check the directory contents (for debugging)
-    - name: List directory contents
-      run: ls -R
-
-    # Step 5: Run any build step if necessary (if you're building a static site)
-    # For example, if you're using npm build or any other build tool, add it here
-    # If you have a build command (like `npm run build`), include it:
-    # - name: Build the project (optional)
-    #   run: npm run build
-
-    # Step 6: Deploy using Surge
-    - name: Deploy using Surge
-      run: surge ./helloworldnew --token ${{ secrets.SURGE_TOKEN }}
+    # Step 4: Deploy using Surge
+    - name: Deploying using Surge
+      run: surge ./helloworldnew.surge.sh --token ${{ secrets.SURGE_TOKEN }}
